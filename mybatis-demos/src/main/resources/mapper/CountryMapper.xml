@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE  mapper  PUBLIC "- //mybatis.org/DTD  Mapper  3.0//EN "
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.powerjun.mybatis.mapper.CountryMapper">
+    <cache/>
+    <select id="selectAll" resultType="Country" flushCache="true">
+        select id , countryname, countrycode from country
+    </select>
+    <select id="selectById" parameterType="int" resultType="Country">
+        select id, countryname, countrycode from country where id=#{id}
+    </select>
+    <update id="updateCountry" parameterType="Country">
+      update country set countryname =#{countryname} where id =#{id}
+    </update>
+
+</mapper>
