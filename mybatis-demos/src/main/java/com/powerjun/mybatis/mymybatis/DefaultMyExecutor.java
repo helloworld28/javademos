@@ -48,20 +48,16 @@ public class DefaultMyExecutor implements MyExecutor {
     public Connection getConnection() {
         Connection connection = null;
         try {
-            Class<?> aClass = Class.forName("com.mysql.cj.jdbc.Driver");
-            aClass.newInstance();
+            Class.forName("com.mysql.cj.jdbc.Driver");
 
             MysqlDataSource mysqlConnectionPoolDataSource = new MysqlConnectionPoolDataSource();
             mysqlConnectionPoolDataSource.setURL(myConfiguration.getUrl());
             mysqlConnectionPoolDataSource.setUser(myConfiguration.getUsername());
             mysqlConnectionPoolDataSource.setPassword(myConfiguration.getPassword());
 
-            connection = (Connection) mysqlConnectionPoolDataSource.getConnection();
+            connection = mysqlConnectionPoolDataSource.getConnection();
 
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
+
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
