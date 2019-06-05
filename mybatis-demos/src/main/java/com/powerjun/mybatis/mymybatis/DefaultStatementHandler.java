@@ -9,16 +9,17 @@ import java.sql.SQLException;
  * @author Jim
  * @date 2019/6/4
  */
-public class StatementHandler {
+public class DefaultStatementHandler implements MyStatementHandler {
 
 
     private Connection connection;
 
-    public StatementHandler(Connection connection) {
+    public DefaultStatementHandler(Connection connection) {
         this.connection = connection;
     }
 
-    public ResultSet doQuery(String statement, Object[] args) throws SQLException {
+    @Override
+    public ResultSet handle(String statement, Object[] args) throws SQLException {
 
         PreparedStatement preparedStatement = connection.prepareStatement(statement);
         if (args != null) {
@@ -29,6 +30,11 @@ public class StatementHandler {
 
         return preparedStatement.executeQuery();
 
+    }
+
+    @Override
+    public void foo() {
+        System.out.println("bar!!!!!!!!!!!!!!!!!");
     }
 
 }

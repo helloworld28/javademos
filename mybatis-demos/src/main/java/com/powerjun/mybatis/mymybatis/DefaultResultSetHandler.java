@@ -11,9 +11,10 @@ import java.util.List;
  * @author Jim
  * @date 2019/6/4
  */
-public class ResultSetHandler {
+public class DefaultResultSetHandler implements MyResultSetHandler {
 
-    <T> List<T> handle(ResultSet resultSet, Class<T> tClass) throws SQLException {
+    @Override
+    public <T> List<T> handle(ResultSet resultSet, Class<T> tClass) throws SQLException {
         ResultSetMetaData metaData = resultSet.getMetaData();
 
         List<T> resultList = new ArrayList<>();

@@ -27,8 +27,12 @@ public class DefaultMyExecutor implements MyExecutor {
         ResultSet resultSet = null;
         try {
             connection = getConnection();
-            resultSet = new StatementHandler(connection).doQuery(statement, args);
-            List<T> handle = new ResultSetHandler().handle(resultSet, tClass);
+            MyStatementHandler myStatementHandler = myConfiguration.newStatementHandler(connection);
+
+            myStatementHandler.foo();
+
+            resultSet = myStatementHandler.handle(statement, args);
+            List<T> handle = myConfiguration.newResultSetHandler().handle(resultSet, tClass);
             return handle;
         } catch (SQLException e) {
             e.printStackTrace();
