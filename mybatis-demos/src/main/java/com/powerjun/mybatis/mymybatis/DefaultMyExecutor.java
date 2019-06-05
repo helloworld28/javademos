@@ -28,7 +28,6 @@ public class DefaultMyExecutor implements MyExecutor {
         try {
             connection = getConnection();
             MyStatementHandler myStatementHandler = myConfiguration.newStatementHandler(connection);
-
             myStatementHandler.foo();
 
             resultSet = myStatementHandler.handle(statement, args);
