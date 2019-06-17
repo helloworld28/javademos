@@ -1,0 +1,10 @@
+@startuml
+ClassPathXmlApplicationContext -> ClassPathXmlApplicationContext: refresh()
+ClassPathXmlApplicationContext -> ClassPathXmlApplicationContext: refreshBeanFactory()
+ClassPathXmlApplicationContext -> ClassPathXmlApplicationContext: createBeanFactory()-> DefaultListableBeanFactory
+ClassPathXmlApplicationContext -> ClassPathXmlApplicationContext:loadBeanDefinitions()
+ClassPathXmlApplicationContext -> XmlBeanDefinitionReader: loadBeanDefinitions
+XmlBeanDefinitionReader -> DefaultBeanDefinitionDocumentReader:doRegisterBeanDefinitions
+DefaultBeanDefinitionDocumentReader -> BeanDefinitionParserDelegate:parseBeanDefinitionElement
+
+@enduml
