@@ -11,4 +11,8 @@ public class Demo {
         Foo bean = classPathXmlApplicationContext.getBean(Foo.class);
         bean.bar();
     }
+
+
+
+
 }
