@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd
 
@@ -8,7 +10,7 @@
 
 
     http://www.springframework.org/schema/aop
-    http://www.springframework.org/schema/aop/spring-aop.xsd">
+    http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
 
     <bean id="foo" class="com.popwerjun.spring.Foo">
@@ -40,9 +42,42 @@
     <bean name="circusBeanA" class="com.popwerjun.spring.CircusBeanA">
         <property name="circusBeanB" ref="circusBeanB"/>
     </bean>
+
     <bean name="circusBeanB" class="com.popwerjun.spring.CircusBeanB">
         <property name="circusBeanA" ref="circusBeanA">
         </property>
     </bean>
+    <bean name="circusBeanBWithP" class="com.popwerjun.spring.CircusBeanB"
+          p:circusBeanA="circusBeanA">
+    </bean>
+
+    <bean name="complexObject" class="com.popwerjun.spring.ComplexObject">
+        <property name="names">
+            <list>
+                <value>foo1</value>
+                <value>foo2</value>
+            </list>
+        </property>
+        <property name="map">
+            <map>
+                <entry key="foo1" value="foo1"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="command" class="com.popwerjun.spring.Command" scope="prototype"/>
+
+    <bean name="command1" class="com.popwerjun.spring.Command" primary="true"/>
+    <bean name="command2" class="com.popwerjun.spring.Command">
+        <qualifier value="command"/>
+    </bean>
+
+    <bean name="commandManager" class="com.popwerjun.spring.CommandManager">
+        <lookup-method bean="command" name="createCommand"/>
+    </bean>
+
+    <bean class="com.popwerjun.spring.BeanInitializationBeanProcessor"></bean>
+
+    <context:annotation-config/>
 
 </beans>
