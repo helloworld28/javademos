@@ -1,2 +1,15 @@
 /.idea
 /javademos.iml
+/mybatis-demos/target/classes/dbconfig.properties
+/mybatis-demos/target/classes/log4j.properties
+/mybatis-demos/target/classes/mapper/CountryMapper.xml
+/mybatis-demos/target/classes/mybatis-config.xml
+/mybatis-demos/target/classes/mytest.sql
+/springdemo/target/classes/LoadBeanDefinition.puml
+/springdemo/target/classes/applicationContext.xml
+/springdemo/target/classes/com/popwerjun/spring/ClientService.class
+/springdemo/target/classes/com/popwerjun/spring/ClientServiceImpl.class
+/springdemo/target/classes/com/popwerjun/spring/DefaultServiceLocator.class
+/springdemo/target/classes/com/popwerjun/spring/Demo.class
+/springdemo/target/classes/com/popwerjun/spring/Foo.class
+/springdemo/target/classes/com/popwerjun/spring/Foo2.class

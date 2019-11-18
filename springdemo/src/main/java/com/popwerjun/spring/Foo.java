@@ -1,12 +1,20 @@
 package com.popwerjun.spring;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 /**
  * Created by Administrator on 2019/6/12.
  */
-public class Foo implements IFoo{
+public class Foo  {
 
     private String name;
 
+    private Foo2 foo2;
+
+    @Autowired
+    public Foo(Foo2 foo2) {
+        this.foo2 = foo2;
+    }
 
     public Foo() {
     }
@@ -19,8 +27,4 @@ public class Foo implements IFoo{
         System.out.println("bar!!!!!!!!!!!!111");
     }
 
-    @Override
-    public void helloWorld() {
-        System.out.println("Helloworld!!!!!!");
-    }
 }
